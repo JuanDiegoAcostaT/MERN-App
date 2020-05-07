@@ -1,5 +1,6 @@
+require('dotenv').config();
 const app = require('./app');
-
+const dataBase = require('./database');
 
 // Starting Server
 
