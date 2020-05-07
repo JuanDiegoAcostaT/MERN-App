@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is the backen for Mern App",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanDiegoAcostaT/MERN-App.git"
+  },
+  "keywords": [
+    "Software",
+    "Mern",
+    "React",
+    "Express",
+    "Mongoose",
+    "MongoDb",
+    "Notes",
+    "Crud",
+    "TaskApp"
+  ],
+  "author": "Juan Diego Acosta 'juandiegoat01@gmail.com'",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanDiegoAcostaT/MERN-App/issues"
+  },
+  "homepage": "https://github.com/JuanDiegoAcostaT/MERN-App#readme",
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "mongoose": "5.9.12"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.3"
+  }
+}
