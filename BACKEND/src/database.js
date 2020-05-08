@@ -10,7 +10,8 @@ const connection = mongoose.connection;
 mongoose.connect(URI , {
      useNewUrlParser: true,
      useUnifiedTopology: true,
-     useCreateIndex : true
+     useCreateIndex : true,
+     useFindAndModify : false
      } )
      .catch( err => console.log(err))
 

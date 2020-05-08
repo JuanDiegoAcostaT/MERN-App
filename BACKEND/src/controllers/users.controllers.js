@@ -1,11 +1,28 @@
 const usersController = {};
 
 
-usersController.getUsers = (req, res, next) => res.send('Users')
+const UserModel = require('../models/User')
 
-usersController.createUser = (req, res, next) => res.send('Users')
+usersController.getUsers = async (req, res, next) =>{
+    const users = await UserModel.find();
+    res.json(users)
+}
 
-usersController.deleteUser = (req, res, next) => res.send('Users')
+
+usersController.createUser = async  (req, res, next) => {
+    const { username } = req.body;
+    const userCreated = new UserModel ({
+        username : username
+    })
+    await userCreated.save()
+    res.json({ message : 'User Created' })
+}
+
+
+usersController.deleteUser = async  (req, res, next) => {
+    const userDeleted = await UserModel.findOneAndDelete(req.params.id);
+    res.json({ message : 'User Deleted' })
+}
 
 
 module.exports = usersController;
