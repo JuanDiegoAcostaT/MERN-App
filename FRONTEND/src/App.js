@@ -1,6 +1,8 @@
 import React from 'react';
 import { Router } from '@reach/router';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Navigation from './components/Navigation';
 import NotesList from './components/NotesList';
 import CreateUser from './components/CreateUser';
