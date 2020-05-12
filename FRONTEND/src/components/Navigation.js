@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 
 export default function Navigation() {
   return (
-    <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+    <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
       <div className='container'>
         <Link className='navbar-brand' to='/'>
           Notes App
@@ -22,7 +22,7 @@ export default function Navigation() {
         </button>
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav ml-auto'>
-            <li className='nav-item active'>
+            <li className='nav-item'>
               <Link className='nav-link' to='/'>
                 Notes List
                 <span className='sr-only'>(current)</span>
