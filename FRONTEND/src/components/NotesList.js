@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import * as timeago from 'timeago.js';
+
 export default function NotesList() {
 
   const [notes, setNotes] = useState([]);
@@ -33,7 +35,7 @@ export default function NotesList() {
                   <div className='card-body'>
                     <h3>{note.title}</h3>
                     <p>{note.content}</p>
-                    <p><span>{note.date}</span></p>
+                    <p><span>{timeago.format(note.date)}</span></p>
                   </div>
                   <button
                     type='submit'

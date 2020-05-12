@@ -20,6 +20,8 @@ export default function CreateNote(props) {
   const fecthData = async () => {
     const res = await axios.get('http://localhost:3000/api/users');
     setUsers(res.data);
+    setUserSelected(res.data[0].username);
+    //Esto de arriba es para que por defecto selecione siempre el primer usuaario que este en el <select />
   };
 
   useEffect(() => {
