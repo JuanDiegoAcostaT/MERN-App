@@ -1,9 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function CreateNote() {
 
   const [users, setUsers] = useState([]);
+  const [userSelected, setUserSelected] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [date, setDate] = useState(new Date());
 
   const fecthData = async () => {
     const res = await axios.get('http://localhost:3000/api/users');
@@ -18,6 +25,23 @@ export default function CreateNote() {
     e.preventDefault();
   };
 
+  const handleChangeSelected = (e) => {
+    setUserSelected(e.target.value);
+  };
+
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
+
+  };
+  const handleChangeContent = (e) => {
+    setContent(e.target.value);
+
+  };
+
+  const handleOnchangeDate = (date) => {
+    setDate(date);
+  };
+
   return (
     <div className='col-md-6 offset-md-3'>
       <div className='card card-body'>
@@ -27,15 +51,45 @@ export default function CreateNote() {
             <select
               name='userSelected'
               className='form-control'
+              onChange={handleChangeSelected}
             >
               {
                 users.map((user) => (
-                  <option key={user._id}>
+                  <option
+                    key={user._id}
+                    value={user.username}
+                  >
                     {user.username}
                   </option>
                 ))
               }
             </select>
+          </div>
+          <div className='form-group'>
+            <input
+              type='text'
+              className='form-control'
+              placeholder='Title'
+              name='title'
+              required
+              onChange={handleChangeTitle}
+            />
+          </div>
+          <div className='form-group'>
+            <textarea
+              name='content'
+              className='form-control'
+              placeholder='Content'
+              required
+              onChange={handleChangeContent}
+            />
+          </div>
+          <div className='form-group'>
+            <DatePicker
+              className='form-control'
+              selected={date}
+              onChange={handleOnchangeDate}
+            />
           </div>
           <button type='submit' className='btn btn-primary'>
             Save
