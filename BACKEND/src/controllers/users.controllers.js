@@ -20,7 +20,7 @@ usersController.createUser = async  (req, res, next) => {
 
 
 usersController.deleteUser = async  (req, res, next) => {
-    const userDeleted = await UserModel.findOneAndDelete(req.params.id);
+    const userDeleted = await UserModel.findByIdAndDelete(req.params.id);
     res.json({ message : 'User Deleted' })
 }
 

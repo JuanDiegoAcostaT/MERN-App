@@ -29,8 +29,10 @@ export default function CreateUser() {
     fecthData();
   };
 
-  const handleDoubleClick = async (id) => {
-    await axios.delete(`http://localhost:3000/api/users/${id}`);
+  const handleClick = async (id) => {
+    await axios.delete(`http://localhost:3000/api/users/${id}`, {
+      data: { _id: id },
+    });
     fecthData();
   };
 
@@ -39,7 +41,7 @@ export default function CreateUser() {
       <div className='col-md-4'>
         <div className='card card-body'>
           <h3>Create New User</h3>
-          <form action='' onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <input
                 type='text'
@@ -53,7 +55,6 @@ export default function CreateUser() {
             </button>
           </form>
         </div>
-        <p>Double Click to Delete User</p>
       </div>
       <div className='col-md-8'>
         <ul className='list-group'>
@@ -62,11 +63,25 @@ export default function CreateUser() {
               <li
                 className='list-group-item list-group-item-action'
                 key={user._id}
-                onDoubleClick={() => handleDoubleClick(user._id)}
               >
-                {
-                  user.username
-                }
+                <div className='row'>
+                  <div className='col-md-6'>
+                    <p>
+                      {
+                        user.username
+                      }
+                    </p>
+                  </div>
+                  <div className='col-md-6'>
+                    <button
+                      type='submit'
+                      className='btn btn-danger'
+                      onClick={() => handleClick(user._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </li>
             ))
           }
