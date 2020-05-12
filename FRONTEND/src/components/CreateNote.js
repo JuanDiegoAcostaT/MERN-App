@@ -1,10 +1,15 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+
 import axios from 'axios';
+
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function CreateNote() {
+import { navigate } from '@reach/router';
+
+export default function CreateNote(props) {
 
   const [users, setUsers] = useState([]);
   const [userSelected, setUserSelected] = useState('');
@@ -21,8 +26,18 @@ export default function CreateNote() {
     fecthData();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await axios.post('http://localhost:3000/api/notes',
+      {
+        author: userSelected,
+        title,
+        content,
+        date,
+      });
+    setTitle('');
+    setContent('');
+    navigate('/');
   };
 
   const handleChangeSelected = (e) => {
@@ -31,11 +46,9 @@ export default function CreateNote() {
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
-
   };
   const handleChangeContent = (e) => {
     setContent(e.target.value);
-
   };
 
   const handleOnchangeDate = (date) => {
@@ -73,6 +86,7 @@ export default function CreateNote() {
               name='title'
               required
               onChange={handleChangeTitle}
+              value={title}
             />
           </div>
           <div className='form-group'>
@@ -82,6 +96,7 @@ export default function CreateNote() {
               placeholder='Content'
               required
               onChange={handleChangeContent}
+              value={content}
             />
           </div>
           <div className='form-group'>
