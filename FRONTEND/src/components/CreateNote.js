@@ -9,19 +9,30 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { navigate } from '@reach/router';
 
-export default function CreateNote(props) {
+export default function CreateNote({ id }) {
 
   const [users, setUsers] = useState([]);
   const [userSelected, setUserSelected] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [date, setDate] = useState(new Date());
+  const [editing, setEditing] = useState(false);
+  const [_id, setId] = useState();
 
-  const fecthData = async () => {
+  const fecthData = async (props) => {
     const res = await axios.get('http://localhost:3000/api/users');
     setUsers(res.data);
     setUserSelected(res.data[0].username);
-    //Esto de arriba es para que por defecto selecione siempre el primer usuaario que este en el <select />
+    //Esto de arriba es para que por defecto selecione siempre el primer usuaario que este en el <select /
+    if (id) {
+      const res = await axios.get(`http://localhost:3000/api/notes/${id}`);
+      setTitle(res.data.title);
+      setContent(res.data.content);
+      setDate(new Date(res.data.date));
+      setUserSelected(res.data.author);
+      setEditing(true);
+      setId(id);
+    }
   };
 
   useEffect(() => {
@@ -30,13 +41,23 @@ export default function CreateNote(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:3000/api/notes',
-      {
-        author: userSelected,
-        title,
-        content,
-        date,
-      });
+    if (editing) {
+      await axios.put(`http://localhost:3000/api/notes/${id}`,
+        {
+          author: userSelected,
+          title,
+          content,
+          date,
+        });
+    } else {
+      await axios.post('http://localhost:3000/api/notes',
+        {
+          author: userSelected,
+          title,
+          content,
+          date,
+        });
+    }
     setTitle('');
     setContent('');
     navigate('/');

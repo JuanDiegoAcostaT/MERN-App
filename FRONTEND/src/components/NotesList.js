@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { Link } from '@reach/router';
+
 import * as timeago from 'timeago.js';
 
 export default function NotesList() {
@@ -37,6 +39,12 @@ export default function NotesList() {
                     <p>{note.content}</p>
                     <p><span>{timeago.format(note.date)}</span></p>
                   </div>
+                  <Link
+                    className=' btn btn-secondary m-4'
+                    to={`/edit/${note._id}`}
+                  >
+                    Edit
+                  </Link>
                   <button
                     type='submit'
                     className='btn btn-danger'

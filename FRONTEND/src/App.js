@@ -9,7 +9,7 @@ import CreateUser from './components/CreateUser';
 import CreateNote from './components/CreateNote';
 import NotFound from './components/NotFound';
 
-const App = () => {
+const App = (props) => {
   return (
     <>
       <Navigation />
