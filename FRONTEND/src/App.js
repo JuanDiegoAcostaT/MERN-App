@@ -7,6 +7,7 @@ import 'bootstrap/js/dist/collapse';
 
 import Navigation from './components/Navigation';
 import NotesList from './components/NotesList';
+import Home from './components/Home';
 import CreateUser from './components/CreateUser';
 import CreateNote from './components/CreateNote';
 import NotFound from './components/NotFound';
@@ -18,7 +19,8 @@ const App = () => {
       <div className='container p-4'>
         <Router>
           <NotFound default />
-          <NotesList exact path='/' />
+          <Home exact path='/' />
+          <NotesList exact path='/notes' />
           <CreateNote exact path='/edit/:id' />
           <CreateNote exact path='/create' />
           <CreateUser exact path='/user' />

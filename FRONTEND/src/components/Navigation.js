@@ -23,7 +23,7 @@ export default function Navigation() {
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav ml-auto'>
             <li className='nav-item'>
-              <Link className='nav-link' to='/'>
+              <Link className='nav-link' to='/notes'>
                 Notes List
                 <span className='sr-only'>(current)</span>
               </Link>

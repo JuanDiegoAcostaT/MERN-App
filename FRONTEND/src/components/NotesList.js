@@ -8,10 +8,15 @@ import * as timeago from 'timeago.js';
 export default function NotesList() {
 
   const [notes, setNotes] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [userSelected, setUserSelected] = useState('');
 
   const fecthData = async () => {
     const res = await axios.get('http://localhost:3000/api/notes');
+    const resUsers = await axios.get('http://localhost:3000/api/users');
     setNotes(res.data);
+    setUsers(resUsers.data);
+
   };
 
   useEffect(() => {
@@ -25,8 +30,46 @@ export default function NotesList() {
     fecthData();
   };
 
+  const handleChangeSelected = (e) => {
+    setUserSelected(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.get(`http://localhost:3000/api/notes/author/${userSelected}`);
+    setNotes(res.data);
+  };
+
   return (
     <div className='container'>
+      <div className='row mb-5'>
+        <div className='col-md-12'>
+          <h4 className='text-light'>Select User</h4>
+          <form onSubmit={handleSubmit}>
+            <div className='form-group'>
+              <select
+                name='userSelected'
+                className='form-control'
+                onChange={handleChangeSelected}
+              >
+                {
+                  users.map((user) => (
+                    <option
+                      key={user._id}
+                      value={user.username}
+                    >
+                      {user.username}
+                    </option>
+                  ))
+                }
+              </select>
+            </div>
+            <button type='submit' className='btn btn-primary btn-block'>
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
       <div className='row'>
         {
           notes.map((note) => (

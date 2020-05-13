@@ -60,7 +60,7 @@ export default function CreateNote({ id }) {
     }
     setTitle('');
     setContent('');
-    navigate('/');
+    navigate('/notes');
   };
 
   const handleChangeSelected = (e) => {

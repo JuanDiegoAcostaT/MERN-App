@@ -7,6 +7,13 @@ notesController.getNotes = async (req, res, next) => {
     res.json(notes);
 };
 
+notesController.getAuthorNotes = async (req, res, next) => {
+    const notes = await NoteModel.find({ author : req.params.author });
+    res.json(notes);
+};
+
+
+
 notesController.createNote = async (req, res, next) => {
     const { title, content, date, author } = req.body;
     const newNote = new NoteModel ( {
