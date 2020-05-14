@@ -2,6 +2,8 @@
 
 This is a task application developed under the CRUD concept, where you can schedule all the tasks you have in life.
 
+The application uses StackMERN which means that we are using React to do the whole interface with js and then we connect with the api through mongoDB and an ORM as mongoose with the help of Node and its Framework Expess.
+
 -Javascript
 
 -React
@@ -14,6 +16,9 @@ This is a task application developed under the CRUD concept, where you can sched
 
 -Webpack
 
+-Node
+
+-Express
 
 <img src="./ss/Notes.png" />
 
