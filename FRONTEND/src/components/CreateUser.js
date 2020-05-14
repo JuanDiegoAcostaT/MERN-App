@@ -61,7 +61,7 @@ export default function CreateUser() {
           {
             users.map((user) => (
               <li
-                className='list-group-item list-group-item-action mt-2'
+                className='list-group-item list-group-item-action mt-2 mb-2'
                 key={user._id}
               >
                 <div className='row'>

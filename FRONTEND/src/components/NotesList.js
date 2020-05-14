@@ -52,6 +52,7 @@ export default function NotesList() {
                 className='form-control'
                 onChange={handleChangeSelected}
               >
+                <option value='Seleciona Tu Usuario'>Seleciona Tu Usuario</option>
                 {
                   users.map((user) => (
                     <option

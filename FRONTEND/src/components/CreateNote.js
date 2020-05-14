@@ -29,7 +29,7 @@ export default function CreateNote({ id }) {
       setTitle(res.data.title);
       setContent(res.data.content);
       setDate(new Date(res.data.date));
-      setUserSelected(res.data.author);
+      setUserSelected(res.data[0]);
       setEditing(true);
       setId(id);
     }
@@ -89,6 +89,7 @@ export default function CreateNote({ id }) {
               className='form-control'
               onChange={handleChangeSelected}
             >
+              <option value='Seleciona Tu Usuario'>Seleciona Tu Usuario</option>
               {
                 users.map((user) => (
                   <option
