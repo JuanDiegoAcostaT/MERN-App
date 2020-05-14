@@ -15,7 +15,7 @@ This is a task application developed under the CRUD concept, where you can sched
 -Webpack
 
 
-<img src="./ss/Note.png" />
+<img src="./ss/Notes.png" />
 
 ## Steps
 -You must install all the packages and dependencies that are specified in the package.json
