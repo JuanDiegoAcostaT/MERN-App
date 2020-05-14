@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "nodemon src/index.js"
-
+    "build": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +32,8 @@
     "cors": "2.8.5",
     "dotenv": "8.2.0",
     "express": "4.17.1",
-    "mongoose": "5.9.12"
+    "mongoose": "5.9.12",
+    "ngrok": "3.2.7"
   },
   "devDependencies": {
     "nodemon": "2.0.3"

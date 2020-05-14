@@ -21,10 +21,12 @@ export default function CreateNote({ id }) {
 
   const fecthData = async (props) => {
     const res = await axios.get('http://localhost:3000/api/users');
+    // const res = await axios.get('https://ead859eb.ngrok.io/api/users');
     setUsers(res.data);
     setUserSelected(res.data[0].username);
     //Esto de arriba es para que por defecto selecione siempre el primer usuaario que este en el <select /
     if (id) {
+      // const res = await axios.get(`https://ead859eb.ngrok.io/api/notes/${id}`);
       const res = await axios.get(`http://localhost:3000/api/notes/${id}`);
       setTitle(res.data.title);
       setContent(res.data.content);
@@ -42,6 +44,7 @@ export default function CreateNote({ id }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editing) {
+      // await axios.put(`https://ead859eb.ngrok.io/api/notes/${id}`,
       await axios.put(`http://localhost:3000/api/notes/${id}`,
         {
           author: userSelected,
@@ -50,6 +53,7 @@ export default function CreateNote({ id }) {
           date,
         });
     } else {
+      // await axios.post('https://ead859eb.ngrok.io/api/notes',
       await axios.post('http://localhost:3000/api/notes',
         {
           author: userSelected,

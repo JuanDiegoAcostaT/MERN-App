@@ -12,6 +12,8 @@ export default function NotesList() {
   const [userSelected, setUserSelected] = useState('');
 
   const fecthData = async () => {
+    // const res = await axios.get('https://ead859eb.ngrok.io/api/notes');
+    // const resUsers = await axios.get('https://ead859eb.ngrok.io/api/users');
     const res = await axios.get('http://localhost:3000/api/notes');
     const resUsers = await axios.get('http://localhost:3000/api/users');
     setNotes(res.data);
@@ -24,6 +26,7 @@ export default function NotesList() {
   }, []);
 
   const handleClick = async (id) => {
+    // await axios.delete(`https://ead859eb.ngrok.io/api/notes/${id}`, {
     await axios.delete(`http://localhost:3000/api/notes/${id}`, {
       data: { _id: id },
     });
@@ -36,6 +39,7 @@ export default function NotesList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const res = await axios.get(`https://ead859eb.ngrok.io/api/notes/author/${userSelected}`);
     const res = await axios.get(`http://localhost:3000/api/notes/author/${userSelected}`);
     setNotes(res.data);
   };

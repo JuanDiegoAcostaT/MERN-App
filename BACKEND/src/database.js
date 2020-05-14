@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-// const URI = process.env.MONGODB_URI ? 
-// process.env.MONGODB_URI :
-//  'mongo://localhost/databasetest';
+const URI = process.env.MONGODB_URI ? 
+process.env.MONGODB_URI :
+ 'mongo://localhost/databasetest';
 
-const URI = 'mongodb+srv://JuanDiego:Motocros123@cluster0-f04ip.mongodb.net/test?retryWrites=true&w=majority';
 
 const connection = mongoose.connection;
 
