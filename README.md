@@ -15,7 +15,7 @@ This is a task application developed under the CRUD concept, where you can sched
 -Webpack
 
 
-<img src="Notes.png" />
+<img src="./Note.png" />
 
 ## Steps
 -You must install all the packages and dependencies that are specified in the package.json
@@ -24,4 +24,4 @@ This is a task application developed under the CRUD concept, where you can sched
 
 -Ready, after all the above named the application tells you how to group your tasks by users and how to schedule them by date so that you are organized.
 
-<img src="CreateUser.png" />
+<img src="./CreateUser.png" />
