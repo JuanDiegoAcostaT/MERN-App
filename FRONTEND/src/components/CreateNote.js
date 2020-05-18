@@ -20,15 +20,15 @@ export default function CreateNote({ id }) {
   const [_id, setId] = useState();
 
   const fecthData = async (props) => {
-    // const res = await axios.get('http://localhost:3000/api/users');
-    const res = await axios.get('http://taskapp-mern.herokuapp.com/api/users');
-    // const res = await axios.get('https://ead859eb.ngrok.io/api/users');
+    // const res = await axios.get('https://localhost:3000/api/users');
+    const res = await axios.get('https://taskapp-mern.herokuapp.com/api/users');
+    // const res = await axios.get('httpss://ead859eb.ngrok.io/api/users');
     setUsers(res.data);
     setUserSelected(res.data[0].username);
     //Esto de arriba es para que por defecto selecione siempre el primer usuaario que este en el <select /
     if (id) {
-      // const res = await axios.get(`https://ead859eb.ngrok.io/api/notes/${id}`);
-      const res = await axios.get(`http://taskapp-mern.herokuapp.com/api/notes/${id}`);
+      // const res = await axios.get(`httpss://ead859eb.ngrok.io/api/notes/${id}`);
+      const res = await axios.get(`https://taskapp-mern.herokuapp.com/api/notes/${id}`);
       setTitle(res.data.title);
       setContent(res.data.content);
       setDate(new Date(res.data.date));
@@ -45,8 +45,8 @@ export default function CreateNote({ id }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editing) {
-      // await axios.put(`https://ead859eb.ngrok.io/api/notes/${id}`,
-      await axios.put(`http://taskapp-mern.herokuapp.com/api/notes/${id}`,
+      // await axios.put(`httpss://ead859eb.ngrok.io/api/notes/${id}`,
+      await axios.put(`https://taskapp-mern.herokuapp.com/api/notes/${id}`,
         {
           author: userSelected,
           title,
@@ -54,8 +54,8 @@ export default function CreateNote({ id }) {
           date,
         });
     } else {
-      // await axios.post('https://ead859eb.ngrok.io/api/notes',
-      await axios.post('http://taskapp-mern.herokuapp.com/api/notes',
+      // await axios.post('httpss://ead859eb.ngrok.io/api/notes',
+      await axios.post('https://taskapp-mern.herokuapp.com/api/notes',
         {
           author: userSelected,
           title,
