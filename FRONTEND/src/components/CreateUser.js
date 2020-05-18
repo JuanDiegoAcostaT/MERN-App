@@ -8,7 +8,7 @@ export default function CreateUser() {
 
   const fecthData = async () => {
     // const res = await axios.get('https://ead859eb.ngrok.io/api/users');
-    const res = await axios.get('http://localhost:3000/api/users');
+    const res = await axios.get('http://taskapp-mern.herokuapp.com/api/users');
     setUsers(res.data);
   };
 
@@ -23,7 +23,7 @@ export default function CreateUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // await axios.post('https://ead859eb.ngrok.io/api/users',
-    await axios.post('http://localhost:3000/api/users',
+    await axios.post('http://taskapp-mern.herokuapp.com/api/users',
       {
         username: nameuser,
       });
@@ -33,7 +33,7 @@ export default function CreateUser() {
 
   const handleClick = async (id) => {
     // await axios.delete(`https://ead859eb.ngrok.io/api/users/${id}`, {
-    await axios.delete(`http://localhost:3000/api/users/${id}`, {
+    await axios.delete(`http://taskapp-mern.herokuapp.com/api/users/${id}`, {
       data: { _id: id },
     });
     fecthData();
